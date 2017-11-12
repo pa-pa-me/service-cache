@@ -1,7 +1,7 @@
 'use strict';
 
-const transform = process.env.BABEL_TRANSFORM || 'off';
-const src = transform === 'on' ? './src/index' : './build/index';
+const transform = process.env.BABEL_TRANSFORM || 'on';
+const src = './src/index';
 
 if (transform === 'on') {
     console.log('babel transform enabled');
