@@ -1,4 +1,3 @@
-var merge = require('merge')
 var log4js = require('log4js');
 var config = require('../config');
 var logName;
@@ -47,10 +46,10 @@ Logger.setName = function (name) {
 
 Logger.init = function (param) {
     var tmpConfig = {};
-    tmpConfig = merge(tmpConfig, config.logger);
+    tmpConfig = Object.assign(tmpConfig, config.logger);
 
     if (param) {
-        tmpConfig = merge(tmpConfig, param)
+        tmpConfig = Object.assign(tmpConfig, param)
 
         var appenders = tmpConfig.appenders;
         if (appenders) {
