@@ -1,0 +1,41 @@
+{
+  "name": "wechat-module",
+  "version": "0.0.1",
+  "dependencies": {
+    "co-redis": "^2.1.1",
+    "co-request": "^1.0.0",
+    "crypto": "0.0.3",
+    "koa": "next",
+    "koa-bodyparser": "next",
+    "koa-logger": "next",
+    "koa-router": "next",
+    "lodash": "^4.17.4",
+    "querystring": "^0.2.0",
+    "redis": "^2.6.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.19.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-plugin-transform-es2015-parameters": "^6.21.0",
+    "babel-register": "^6.18.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.12.1",
+    "supertest": "^3.0.0"
+  },
+  "scripts": {
+    "start": "set BABEL_TRANSFORM=on&&nodemon app.js",
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run clean && babel -d ./build ./src -s",
+    "test": "set BABEL_TRANSFORM=on&&mocha"
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs",
+      "transform-async-to-generator",
+      "transform-es2015-parameters",
+      "transform-es2015-destructuring"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+.idea/
+.DS_Store
+test/test_audio.mp3
+test/test_doc.docx
+test/test_movie.mp4
+test/common/Aerial01.jpg
+test/common/Aerial02.jpg
+node_modules
