@@ -13,13 +13,9 @@ module.exports = {
     },
 
     "logger": {
-        "levels": {
-            "[all]": "ERROR"
-        },
-        messagePub: {
-            host: 'service.hcdlearning.com'
-        },
-        appName: 'wechat-module'
+        appenders: { serviceCache: { type: 'file', filename: 'service-cache.log' } },
+        categories: { default: { appenders: ['serviceCache'], level: 'error' } },
+        appName: 'service-cache'
         // ,"replaceConsole": true
     }
 

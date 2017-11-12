@@ -53,37 +53,14 @@ Logger.init = function (param) {
 
         var appenders = tmpConfig.appenders;
         if (appenders) {
-            appenders.forEach(function (a) {
-                a.appName = tmpConfig.appName;
+            Object.keys(appenders).forEach(function (a) {
+                appenders[a].appName = tmpConfig.appName;
             });
         }
     }
 
     log4js.configure(tmpConfig);
-
-    if (tmpConfig.messagePub) {
-        tmpConfig.messagePub.appName = tmpConfig.appName;
-
-        var pubAppender = require('./appender/kafkaPub');
-        log4js.loadAppender('messagePub', pubAppender);
-        log4js.addAppender(pubAppender.appender(tmpConfig.messagePub));
-    }
-    if (tmpConfig.plugin_appenders) {
-        for (var i in tmpConfig.plugin_appenders) {
-            var appenderConfig = tmpConfig.plugin_appenders[i];
-
-            if (!appenderConfig.config) {
-                appenderConfig.config = {};
-            }
-            appenderConfig.config.appName = tmpConfig.appName;
-
-            var func = appenderConfig.appender;
-            log4js.loadAppender(appenderConfig.type, func);
-            log4js.addAppender(func.appender(appenderConfig.config));
-        }
-    }
-
-}
+};
 
 Logger.express = function (level) {
     return log4js.connectLogger(log4js.getLogger(logName),
